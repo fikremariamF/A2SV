@@ -1,0 +1,17 @@
+class Solution: 
+    def select(self, arr, i):
+        array=arr[i:len(arr)]
+        value=array[0]
+        for i in array:
+            if i<value:
+                value=i
+        return value,array.index(value)
+    
+    def selectionSort(self, arr,n):
+        #code here
+        for i in range (n):
+            z,y=self.select(arr,i)
+            num2=arr[i]
+            arr[i]=z
+            arr[y+i]=num2
+        return arr
