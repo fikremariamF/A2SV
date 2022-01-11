@@ -1,0 +1,11 @@
+def max_dominos():
+    value = input()
+    value = value.split()
+    new_value = []
+    for x in value:
+        x = int(x)
+        new_value.append(x)
+    max_dominos = new_value[0] * new_value[1] // 2
+    return max_dominos
+ 
+print(max_dominos())
