@@ -1,0 +1,15 @@
+     class Solution(object):
+    def smallerNumbersThanCurrent(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        counter = 0
+        arr=[]
+        for value in nums:
+            for another_value in nums:
+                if value > another_value:
+                    counter = counter + 1
+            arr.append(counter)
+            counter = 0
+        return arr
