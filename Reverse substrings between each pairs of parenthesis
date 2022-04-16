@@ -1,0 +1,27 @@
+class Solution(object):
+    def reverseParentheses(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        lists = []
+        for n in s:
+            if n == ")":
+                anotherlist = []
+                found = True
+                while found:
+                    popped = lists.pop()
+                    if popped != "(":
+                        anotherlist.append(popped)
+                    else:
+                        found = False
+                # anotherlist.reverse()
+                lists += anotherlist
+
+            else:
+                lists.append(n)
+                # print(lists)
+
+        return "".join(lists)
+            
+        
