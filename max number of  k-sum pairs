@@ -1,0 +1,16 @@
+class Solution(object):
+    def maxOperations(self, nums, k):
+        nums.sort()
+        counter = 0
+        minind, maxind = 0, len(nums) - 1
+        while minind < maxind:
+            if nums[minind] + nums[maxind] == k:
+                counter += 1
+                minind += 1
+                maxind -= 1
+            elif nums[minind] + nums[maxind] < k:
+                minind += 1
+            else:
+                maxind -= 1
+        return counter             
+        
