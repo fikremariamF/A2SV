@@ -1,0 +1,43 @@
+class Solution(object):
+    def evalRPN(self, tokens):
+        """
+        :type tokens: List[str]
+        :rtype: int
+        """
+        mylist = []
+        for n in tokens:
+            if n != "+" and n != "*" and n != "/" and n != "-":
+                mylist.append(n)
+            else:
+                if n == "+":
+                    newnum = int(mylist.pop()) + int(mylist.pop())
+                    # print(newnum, n)
+                    mylist.append(newnum)
+                elif n == "*":
+                    newnum = int(mylist.pop()) * int(mylist.pop())
+                    # print(newnum, n)
+                    mylist.append(newnum)
+                elif n == "-":
+                    newnum = int(mylist[-2]) - int(mylist[-1])
+                    # print(newnum, n)
+                    mylist.pop()
+                    mylist.pop()
+                    mylist.append(newnum)
+                elif n == "/":
+                    print(mylist)
+                    newnum = float(mylist[-2]) / float(mylist[-1])
+                    # print(1//newnum, n)
+                    # if newnum == 0:
+                    #     newnum = 0
+                    # else:
+                    #     newnum = 1 // newnum
+                    print(newnum)
+                    if newnum < 1 and newnum > -1:
+                        newnum = 0
+                    print(newnum)
+                    newnum == newnum//1
+                    mylist.pop()
+                    mylist.pop()
+                    mylist.append(int(newnum))
+                    print(mylist)
+        return mylist[0]
