@@ -1,0 +1,17 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        mylist = []
+        for n in nums1:
+            index = nums2.index(n)
+            tempo = n
+            pointer = index + 1
+            while pointer < len(nums2):
+                if nums2[pointer] > tempo:
+                    tempo = nums2[pointer]
+                    break
+                pointer += 1
+            if tempo == n:
+                mylist.append(-1) 
+            else:
+                mylist.append(tempo)
+        return mylist
