@@ -1,0 +1,33 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        mystack = []
+        for n in s:
+            if n != "]":
+                mystack.append(n)
+            else:
+                tempo = []
+                num = 0
+                value = ""
+                
+                while mystack[-1] != "[":
+                    tempo.append(mystack.pop())
+                mystack.pop()
+                mynum = []
+                if len(mystack) > 1:
+                    while mystack[-1].isdigit():
+                        mynum.append(mystack.pop())
+                        if len(mystack) == 1:
+                            if mystack[-1].isdigit():
+                                mynum.append(mystack.pop())
+                                break
+                else:
+                    mynum.append(mystack.pop())
+                mynum.reverse()
+                print(mynum)
+                num = int("".join(mynum))
+                print(tempo, "**")
+                tempo.reverse()
+                mystack.append("".join(tempo) * num)
+                
+        return "".join(mystack)
+            
