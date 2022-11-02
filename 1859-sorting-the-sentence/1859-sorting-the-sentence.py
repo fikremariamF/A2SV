@@ -14,7 +14,6 @@ class Solution(object):
                 if int(value[-1]) == counter:
                     new_value = value[:-1]
                     new_word.append(new_value)
-                    print(value)
                     word_arr.remove(value)
                     counter = counter + 1
         for word in new_word:
