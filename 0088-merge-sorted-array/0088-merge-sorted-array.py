@@ -22,5 +22,3 @@ class Solution:
                 nums1[p3] = nums2[p2]
                 p3 -= 1
                 p2 -= 1
-                
-            
