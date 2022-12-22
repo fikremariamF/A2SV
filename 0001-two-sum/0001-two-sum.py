@@ -9,18 +9,13 @@ class Solution:
         nums.sort()
         i, j = 0, len(nums)-1
         while i < j:
-            # print(nums[i], nums[j])
-            # print(nums[i] + nums[j])
-            # print(i,j)
             if nums[i] + nums[j] > target:
                 j -= 1
             elif nums[i] + nums[j] == target:
                 if nums[i] != nums[j]:
-                    # print("first")
                     return [mydict[nums[i]][0],mydict[nums[j]][0]]
                 else:
-                    # print("second")
                     return mydict[nums[i]]
             else:
                 i += 1
-        return [mydict[nums[i]][0],mydict[nums[j]][0]]
+        # return [mydict[nums[i]][0],mydict[nums[j]][0]]
