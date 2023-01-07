@@ -1,28 +1,15 @@
 class Solution:
-    
-    def checker(self, mealValue, powers, mealDict):
-        pair = 0
-        for power in powers:
-            difference = power - mealValue
-            if difference in mealDict.keys():
-                if mealValue == difference:
-                    pair += mealDict[mealValue] - 1
-                else:
-                    pair += mealDict[difference] 
-        return pair
-    
-    def countPairs(self, given: List[int]) -> int:
-        
+    def countPairs(self, deliciousness: List[int]) -> int:
+        squares = [2 ** n for n in range(22)]
+        # print(squares)
+        counts = Counter(deliciousness)
         pairs = 0
-        mealDict = Counter(given)
-        
-        twos_powers = []
-        for number in range(0,22):
-            twos_powers.append(2 ** number)
-        for value in given:
-            pairs += self.checker(value, twos_powers, mealDict)
-            # self.checked.add(value)
-        pairs = pairs // 2
-        
-        return pairs % ((10**9) + 7)
-        
+        for index in range(len(deliciousness)):
+            for square in squares:
+                val = square - deliciousness[index]
+                if val in counts:
+                    if val == deliciousness[index]:
+                        pairs += (counts[val] - 1)
+                    else:
+                        pairs += (counts[val])
+        return (pairs//2) % ((10**9)+7)
