@@ -4,16 +4,13 @@ class Solution:
         maximum = max(heights)
         
         answers = [[] for _ in range(maximum)]
-        # print(len(answers))
         for idx in range(len(heights)):
-            # print(idx)
-            # print(heights[idx])
             answers[heights[idx] - 1].append(names[idx])
         names = []
-        for ans in answers:
-            if ans:
-                for name in ans:
+        for idx in range(len(answers) -1 , -1, -1):
+            if answers[idx]:
+                for name in answers[idx]:
                     names.append(name)
-        names.reverse()
+        # names.reverse()
         return names
             
