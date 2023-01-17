@@ -7,7 +7,6 @@ class Solution:
                     max_height = j
             names[i], names[max_height] = names[max_height], names[i]
             heights[i] , heights[max_height] = heights[max_height], heights[i]
-            
-        # names.reverse()
+         
         return names
             
