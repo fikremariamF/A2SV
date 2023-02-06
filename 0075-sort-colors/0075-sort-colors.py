@@ -3,4 +3,10 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        nums.sort()
+        for _ in nums:
+            i = 0
+            while i < len(nums) - 1:
+                if nums[i] >= nums[i + 1]:
+                    nums[i], nums[i + 1] = nums[i + 1], nums[i]
+                i += 1
+        return nums
