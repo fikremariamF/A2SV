@@ -12,13 +12,11 @@ class Solution:
             ptr += 1
         ptr_left = 0
         ptr_right = 1
-        # print(nums)
         while ptr_right < len(nums) - 1:
             while ptr_right < len(nums) - 1 and nums[ptr_right] == "_":
                 ptr_right += 1
             while nums[ptr_left] != "_" and ptr_left < ptr_right:
                 ptr_left += 1
-            # print(ptr_left, ptr_right)
             if nums[ptr_left] == "_" and nums[ptr_right] != "_":
                 nums[ptr_left], nums[ptr_right] = nums[ptr_right], nums[ptr_left]
             elif ptr_left == ptr_right:
@@ -26,7 +24,6 @@ class Solution:
                     ptr_right += 1
             else:
                 break
-            # print(nums)
         counter = 0
         for num in nums:
             if num != "_":
