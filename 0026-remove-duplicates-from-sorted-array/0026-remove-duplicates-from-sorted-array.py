@@ -3,7 +3,6 @@ class Solution:
         ptr = 1
         prev = nums[0]
         while ptr < len(nums):
-            # print(ptr)
             if nums[ptr] == prev:
                 prev = nums[ptr]
                 nums[ptr] = "_"
