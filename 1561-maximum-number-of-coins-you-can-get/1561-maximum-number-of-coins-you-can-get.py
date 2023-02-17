@@ -1,0 +1,14 @@
+class Solution(object):
+    def maxCoins(self, piles):
+        """
+        :type piles: List[int]
+        :rtype: int
+        """
+        piles.sort()
+        sum = 0
+        while piles:
+                piles.pop()
+                sum += piles.pop()
+                piles.pop(0)
+        return sum
+            
