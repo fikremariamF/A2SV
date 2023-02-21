@@ -1,8 +1,3 @@
-class ListNode:
-    def __init__(self, page: str, next = None):
-        self.page = page
-        self.next = next
-        
 class BrowserHistory:
     def __init__(self, homepage: str):
         self.rootPage = ListNode(homepage)
@@ -17,7 +12,7 @@ class BrowserHistory:
         while len(self.stack) > 1 and steps > 0:
             self.stack.pop()
             steps -= 1
-        return self.stack[-1].page
+        return self.stack[-1].val
 
     def forward(self, steps: int) -> str:
         curr = self.stack[-1]
@@ -27,8 +22,8 @@ class BrowserHistory:
             steps -= 1
         print(steps)
         if steps == 0:
-            return curr.page
-        return self.stack[-1].page
+            return curr.val
+        return self.stack[-1].val
 
 # Your BrowserHistory object will be instantiated and called as such:
 # obj = BrowserHistory(homepage)
