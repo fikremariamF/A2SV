@@ -3,8 +3,8 @@ class Solution:
         # arr = [i for i in range((x//2) + 1)]
         # print(arr)
         left, right = 0, x
-        if x == 1:
-            return 1
+        # if x == 1:
+        #     return 1
         while left <= right:
             mid = (left + right)//2
             # print(left, right, mid)
