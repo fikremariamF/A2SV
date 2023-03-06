@@ -17,7 +17,7 @@ class Solution:
         for idx in range(len(words)):
             words[idx] = self.findFrequency(words[idx])
         
-        print(queries, words)
+        # print(queries, words)
         words.sort()
         output = []
         for query in queries:
