@@ -22,5 +22,4 @@ class Solution:
                 arr.append(node.val)
         return arr
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        arr = self.traverse(root)
-        return arr
+        return self.traverse(root)
