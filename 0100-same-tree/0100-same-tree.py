@@ -17,12 +17,12 @@ class Solution:
             qQueue.append(q)
         
             proceed = True
+            
             while pQueue and qQueue:
-                # print(pQueue, qQueue)
                 if len(pQueue) == len(qQueue) and pQueue[0].val == qQueue[0].val:
                     p = pQueue.popleft()
                     q = qQueue.popleft()
-                    # print(p.val, q.val)
+                    
                     if type(p.left) == type(q.left):
                         if p.left:
                             pQueue.append(p.left)
@@ -30,6 +30,7 @@ class Solution:
                             qQueue.append(q.left)
                     else:
                         return False
+                    
                     if type(p.right) == type(q.right):
                         if p.right:
                             pQueue.append(p.right)
@@ -41,7 +42,6 @@ class Solution:
                     return False
             return True
         if type(p) == type(q):
-            # print("here")
             return True
         return False
                 
