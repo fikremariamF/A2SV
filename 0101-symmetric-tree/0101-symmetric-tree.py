@@ -10,9 +10,7 @@ class Solution:
             return (not left and not right)
         
         if left.val == right.val:
-            check1 = self.check(left.left, right.right)
-            check2 = self.check(left.right, right.left)
-            return (check1 and check2)
+            return (self.check(left.left, right.right) and self.check(left.right, right.left))
         
         return False
     
