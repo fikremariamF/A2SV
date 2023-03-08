@@ -12,7 +12,7 @@ class Solution:
             else:
                 return self.findItems(root.left) + [root.val] +self.findItems(root.right)
         return []
+    
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         items = self.findItems(root)
-        # print(items)
         return items[k-1]
