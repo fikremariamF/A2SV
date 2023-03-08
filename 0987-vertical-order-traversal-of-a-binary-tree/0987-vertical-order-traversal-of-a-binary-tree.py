@@ -5,27 +5,20 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
-        columns = defaultdict(list)        
-        def traverse(root, row, col):
-            nonlocal columns
-            if not root:
-                return
-            
-            columns[col].append([row, root.val])
-            traverse(root.left, row + 1, col - 1)
-            traverse(root.right, row + 1, col + 1)
-            
-        traverse(root, 0, 0)
-        # minimum = min(columns)
-        # maximum = max(columns)
-        # print(columns)
-        output = []
-        for key in sorted(columns):
-            columns[key].sort()
+    def helper(self, placement,level, root, dic):
+        if(not root):
+            return
+        dic[placement].append((level, root.val))
+        self.helper(placement-1, level+1, root.left, dic)
+        self.helper(placement+1, level+1, root.right, dic)
+		
+    def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
+        dic = defaultdict(list)
+        self.helper(0,0, root, dic)
+        result = []
+        for i in sorted(dic.keys()):
             temp = []
-            for i, j in columns[key]:
-                temp.append(j)
-            output.append(temp)
-        # print(output)
-        return output
+            for j in sorted(dic[i]):
+                temp.append(j[1])
+            result.append(temp)
+        return result
