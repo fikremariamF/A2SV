@@ -1,35 +1,24 @@
 class Solution:
     def splitString(self, s: str) -> bool:
+        n = len(s)
+        part_count = 0
         
-        prev = None
-        
-        def split(string):
-            nonlocal prev
-            if prev and int(prev)== int(string) + 1:
+        def recur( start , end , prev):
+            nonlocal part_count
+            if start == n and part_count > 1:
                 return True
             
-            temp = []
-            # print(string, temp)
-            for ptr in range(1,len(string)):
-                # if prev:
-                #     print([string[ :ptr], string[ptr: ]],int(prev),int(string[ :ptr]) + 1)
-                if not prev or int(prev) == int(string[ :ptr]) + 1:
-                    temp.append([string[ :ptr], string[ptr: ]])
-            # print("the Last",string, temp)      
-            if not temp:
+            if end == n:
                 return False
             
-            for segment in temp:
-                prev = segment[0]
-                # print("in", prev)
-                val = split(segment[1])
-                if val == True:
-                    return True
-                
-                
-            return False
-        
-        return split(s)
-        
-                
+            res1 = False
+            if prev == None or prev - 1 == int(s[start:end+1]):
+                part_count += 1
+                res1 = recur    (end+1, end+1,int(s[start:end+1]) )
+                part_count -= 1
             
+            res2 = recur(start, end+1 , prev)
+        
+            return res1 or res2
+        
+        return recur(0, 0, None)
