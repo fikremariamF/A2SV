@@ -9,6 +9,7 @@ class Solution:
             col += j
             if 0 <= row < len(self.grid) and 0 <= col < len(self.grid[row]) and (row, col) not in self.visited and self.grid[row][col] == 1:
                 total += self.traverse(row, col)
+                
         return 1 + total
     
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
@@ -20,7 +21,5 @@ class Solution:
                 if (row,col) not in self.visited and self.grid[row][col] == 1:
                     area = self.traverse(row, col)
                     max_area = max(area, max_area)
-                    # print([row, col])
-                    # count += 1
-        # print(count)
+                    
         return max_area
