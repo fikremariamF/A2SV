@@ -17,27 +17,21 @@ class Solution:
         if prev != i:
             arr[prev], arr[i] = arr[i], arr[prev]
             self.heapify(arr, n, prev)
-        # return
     
     #Function to build a Heap from array.
     def buildHeap(self,arr,n):
         for idx in range(n-1, -1 , -1):
             self.heapify(arr, n, idx)
-        # return
                 
     
     #Function to sort an array using Heap Sort.    
     def HeapSort(self, arr, n):
         self.buildHeap(arr,n)
-        # print("arr0", arr)
         arr[-1], arr[0] = arr[0], arr[-1]
-        # print("arr1", arr)
+        
         for idx in range(n-1, 0, -1):
             self.heapify(arr, idx, 0)
-            # print("newarr", arr, idx)
             arr[idx -1], arr[0] = arr[0], arr[idx -1]
-        # print("arr2", arr)
-        # return arr
 
 
 #{ 
