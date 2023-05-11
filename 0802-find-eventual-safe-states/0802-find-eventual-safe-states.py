@@ -1,28 +1,25 @@
 class Solution:
-	"""
-	Time:   O(V + E)
-	Memory: O(V)
-	"""
-
-	WHITE = 0
-	GRAY = 1
-	BLACK = 2
-
-	def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-		def dfs(u: int) -> bool:
-			if color[u] == self.GRAY:
-				return True
-
-			if color[u] == self.BLACK:
-				return False
-
-			color[u] = self.GRAY
-			for v in graph[u]:
-				if dfs(v):
-					return True
-
-			color[u] = self.BLACK
-			return False
-
-		color = [self.WHITE] * len(graph)
-		return [node for node in range(len(graph)) if not dfs(node)]
+    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+        colors = [0 for _ in range(len(graph))]
+        
+        output = []
+        def dfs(idx):
+            if colors[idx] == 2:
+                return True
+            
+            if colors[idx] == 3:
+                return False
+            
+            colors[idx] = 2
+            for tempIdx in graph[idx]:
+                if dfs(tempIdx):
+                    return True
+            
+            colors[idx] = 3
+            return False
+        
+        for idx in range(len(colors)):
+            if not dfs(idx):
+                output.append(idx)
+        output.sort()   
+        return output
