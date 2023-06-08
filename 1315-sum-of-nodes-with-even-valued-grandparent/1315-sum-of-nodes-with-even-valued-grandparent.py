@@ -6,23 +6,21 @@
 #         self.right = right
 class Solution:
     def sumEvenGrandparent(self, root: TreeNode) -> int:
-        nodes = deque([root])
+        evenGrandParent = []
         
-        output = 0
-        while nodes:
-            node = nodes.popleft()
-            if node.val % 2 == 0:
-                if node.left and node.left.left:
-                    output += node.left.left.val
-                if node.left and node.left.right:
-                    output += node.left.right.val
-                if node.right and node.right.left:
-                    output += node.right.left.val
-                if node.right and node.right.right:
-                    output += node.right.right.val
-            if node.left:
-                nodes.append(node.left)
-            if node.right:
-                nodes.append(node.right)
-        return output
+        def dfs(node, parent=None, grandParent=None):
+            if node is None:
+                return
+            
+            if grandParent and grandParent % 2 == 0:
+                nonlocal evenGrandParent
+                evenGrandParent.append(node.val)
+            
+            dfs(node.right, node.val, parent)
+            dfs(node.left, node.val, parent)
+        
+        
+        dfs(root)
+        
+        return sum(evenGrandParent)
                 
