@@ -6,7 +6,9 @@ class Solution:
             g = nums[i]
             for j in range(i, len(nums)):
                 g = gcd(g,nums[j])
-                if g == k : count += 1
-                if g < k  : break
+                if g == k: 
+                    count += 1
+                if g < k: 
+                    break
             
         return count
