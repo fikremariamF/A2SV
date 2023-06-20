@@ -25,7 +25,7 @@ class Solution:
             builder(root.right, root.val)
             neighbours[root.val].append(root.right.val)
         
-        print(neighbours)
+        # print(neighbours)
         level = 0
         curr = neighbours[target.val][:]
         visited = {*curr, target.val}
