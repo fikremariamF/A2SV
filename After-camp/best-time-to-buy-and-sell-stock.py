@@ -5,5 +5,4 @@ class Solution:
         for idx in range(len(prices)-1, -1, -1):
             maxx = max(maxx, prices[idx])
             soln.append(maxx - prices[idx])
-        # print(soln)
         return max(soln)
