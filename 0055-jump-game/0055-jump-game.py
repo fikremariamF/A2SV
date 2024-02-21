@@ -1,16 +1,12 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        stack = [0]
-        visited = set()
-        
-        while stack:
-            # print(stack)
-            popped = stack.pop()
-            if popped == len(nums) - 1:
-                return True
-            visited.add(popped)
-            for num in range(nums[popped]+1):
-                step = popped + num
-                if step not in visited and step < len(nums):
-                    stack.append(step)
+        goal = len(nums) - 1
+        idx = goal - 1
+        while idx >= 0:
+            if idx + nums[idx] >= goal:
+                goal = idx
+            idx -= 1
+        if goal == 0:
+            return True
         return False
+                
